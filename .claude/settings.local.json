@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__navigate_page",
+      "Bash(git init *)",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --use-npm)",
+      "Bash(npx create-next-app@14 . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --use-npm --yes)",
+      "Bash(npm init *)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000\" -TimeoutSec 10 -UseBasicParsing)",
+      "Skill(vercel:deploy)",
+      "Skill(vercel:deploy:*)",
+      "PowerShell(vercel --version 2>&1)",
+      "PowerShell(npm install -g vercel 2>&1)",
+      "PowerShell($env:PATH = \"D:\\\\dev-cache\\\\npm-global;\" + $env:PATH; vercel --version 2>&1)",
+      "PowerShell(Get-ChildItem *)",
+      "Bash(bash .claude/hooks/pre-done.sh)",
+      "Bash(bash .claude/hooks/check-content.sh)",
+      "mcp__chrome-devtools__lighthouse_audit",
+      "PowerShell(cd D:\\\\Website\\\\elanora-bakery; Start-Process powershell -ArgumentList '-NoProfile','-Command','npx next start' -WindowStyle Minimized; Start-Sleep -Seconds 8; Write-Host \"Started\")",
+      "PowerShell(Stop-Process *)",
+      "Bash(npm run *)",
+      "PowerShell(vercel *)",
+      "PowerShell(npm i *)",
+      "PowerShell(npm root *)",
+      "mcp__chrome-devtools__select_page",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__list_console_messages",
+      "WebFetch(domain:coverr.co)",
+      "WebFetch(domain:www.pexels.com)",
+      "WebFetch(domain:pixabay.com)",
+      "WebFetch(domain:mixkit.co)",
+      "mcp__plugin_vercel_vercel__deploy_to_vercel",
+      "PowerShell(git *)"
+    ]
+  }
+}

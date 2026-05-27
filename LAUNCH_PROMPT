@@ -1,0 +1,57 @@
+# NovaCraft — Marketplace Launch Session Start Prompt
+# Paste this as your first message to Claude Code when running the launch sequence.
+# TEST.md must have fully passed (READY: yes) before running this.
+
+Read CLAUDE.md in full.
+Then read LAUNCH.md in full.
+
+Live URL is in CLAUDE.md PROJECT block.
+Brand name is in CLAUDE.md PROJECT block.
+Execute all 6 phases of LAUNCH.md fully and automatically — do not stop, do not ask me anything.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PRE-LAUNCH GATE — RUN BEFORE PHASE 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Confirm TEST.md has passed. Check git log for the QA commit.
+If no QA commit exists → run TEST.md first. Do not proceed with launch
+until READY: yes is confirmed.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXECUTION ORDER — LOCKED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 1 — Screenshot Suite (puppeteer MCP)
+          Navigate to live URL. Create public/marketing/screenshots/.
+          Capture ALL screenshots listed in LAUNCH.md.
+          Wait for animations and 3D scenes to finish before each capture.
+          TYPE B sites: scroll to each section before capturing it —
+          do not capture section screenshots from the top of the page.
+          Confirm each file saved before moving to the next.
+
+PHASE 2 — Project Cleanup
+          Remove all internal files listed in LAUNCH.md Phase 2.
+          Verify /public/models/, /public/environments/, /public/lottie/
+          and /components/3d/ are KEPT if present.
+
+PHASE 3 — Documentation for Buyers
+          Create README.md, CHANGELOG.md, .env.example, documentation/index.html.
+          All files go in project root before zipping.
+          TYPE B sites: README.md must include a "Scroll Architecture" section
+          explaining that the site is a single-page scroll experience and
+          how to add or reorder sections.
+
+PHASE 4 — Create the Marketplace Zip
+          Name: [brand-name]-theme-v1.0.0.zip
+          Save one level up from project root.
+          Verify included/excluded list from LAUNCH.md Phase 4.
+          Report final zip size.
+
+PHASE 5 — Marketing Assets
+          Save all files to public/marketing/.
+          Create every file listed in LAUNCH.md Phase 5.
+          Use brand name and live URL from CLAUDE.md throughout.
+          3D features: include only if project actually uses 3D.
+
+PHASE 6 — Final Report
+          Output the LAUNCH READY REPORT from LAUNCH.md.
+          Include submit order and viral launch sequence.
+          Do not declare done until all 6 phases are fully complete.

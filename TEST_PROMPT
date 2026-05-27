@@ -1,0 +1,45 @@
+# 🛑 PROTOCOL INITIATION: ADVERSARIAL QA AUDIT (LIVE ON VERCEL)
+Read CLAUDE.md in full. Do NOT edit, update, modify, or check off boxes in CLAUDE.md, TEST.md, or the .claude/ folder. They are locked.
+
+You are now the **Zero-Tolerance Quality Assurance Inspector**. Your objective is to ruthlessly stress-test the live Vercel deployment against the original target source URL. 
+
+Live URL (Vercel): [PASTE_YOUR_LIVE_VERCEL_URL_HERE]
+Source URL:       [PASTE_YOUR_TARGET_SOURCE_URL_HERE]
+
+Execute all phases of `TEST.md` fully, sequentially, and automatically against the LIVE URL. Do not stop. Do not assume. Verify everything using Chrome MCP.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PRE-FLIGHT CONSOLE & NETWORK AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Use Chrome MCP to open the Live Vercel URL.
+2. Wait exactly 5 seconds to let WebGL shaders compile, heavy assets download, and videos initialize.
+3. Check the DevTools Console. FAIL immediately if there are ANY uncaught exceptions, React hydration errors, or failed asset requests.
+4. Check the Network Tab via JavaScript evaluations. Ensure all `.glb`, `.gltf`, `.mp4`, or `.json` (Lottie) assets loaded with status 200 (No CORS blocks or 404s).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+THE VISUAL PARITY BLINK TEST (MANDATORY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+You must catch any visual simplification. 
+1. Screenshot the Hero section of the SOURCE URL (Wait 4 seconds before capture).
+2. Screenshot the Hero section of the LIVE VERCEL URL (Wait 4 seconds before capture).
+3. Analyze them side-by-side with an aggressive eye. 
+   - Did you drop a background video or rich gradient for a flat color fallback?
+   - Is there a 3D canvas active on the source but a static box or empty space on the clone?
+   - Is the luxury tracking, kerning, and typography layout completely identical?
+4. If there is ANY visual variance, fail the phase, use the filesystem tool to update the code, redeploy, and re-test.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONTENT SUBSTITUTION & SHELL CHECK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Execute `bash .claude/hooks/check-content.sh` via the terminal tool.
+2. Read the script output carefully. Fix any remaining placeholder strings, "Lorem Ipsum" variations, or passive event-wiring hooks.
+3. Verify that the copy and headings on the Live URL are unique placeholder variants that maintain identical character lengths, but contain ZERO direct text copy-pasted from the original source brand.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CINEMATIC PERFORMANCE & INTERACTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. Simulate a scroll down the live page using Chrome MCP. 
+2. Verify that the scroll is smooth (Lenis/GSAP) and does not stutter or jump abruptly.
+3. Verify that any WebGL/3D canvases maintain interactive responsiveness when elements are hovered or scrolled over.
+
+If any check fails, do not report "Ready." You must fix the code, push to main, wait for the Vercel build to succeed, and re-run this entire audit from Step 1. Output your FINAL REPORT checklist from TEST.md only when all live checks are 100% green.

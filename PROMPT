@@ -1,0 +1,309 @@
+# NovaCraft — Universal Session Start Prompt
+# Fill the PROJECT block in CLAUDE.md before pasting this.
+# Paste this entire file as your first message to Claude Code.
+
+Read CLAUDE.md, then .claude/3d-system.md, then .claude/agency-patterns.md, then .claude/asset-fallback.md — all in full.
+Do not proceed until ALL FOUR files are completely loaded.
+
+Project details are in CLAUDE.md PROJECT block.
+Execution is locked — follow exactly:
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 0 — ARCHITECTURE DETECTION (MANDATORY FIRST STEP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ THIS RUNS BEFORE PHASE 1. IT DETERMINES THE ENTIRE SCAFFOLD.
+Getting this wrong = wrong architecture = broken clone. No exceptions.
+
+Open Chrome MCP. Navigate to the Target URL.
+Run ALL of the following in DevTools console:
+
+STEP 1 — Navigation type test:
+Click every nav link. Watch the browser URL bar.
+Record what happens:
+
+  A) URL changes to /work, /about, /contact AND page fully reloads/transitions
+     → TYPE C: GSAP-driven virtual SPA (pages with animated transitions)
+  B) URL does NOT change, or only the hash changes (#work, #about)
+     → TYPE B: FULL-SCROLL SPA (everything in one document)
+  C) URL changes AND you see distinct page loads with no shared persistent canvas
+     → TYPE A: Standard MPA (separate Next.js pages per route)
+
+STEP 2 — Document structure test:
+  document.querySelectorAll('section, [data-section], [data-page], [data-panel], [data-slide]').length
+  // Count > 3 inside ONE document = likely TYPE B
+
+STEP 3 — Scroll library detection:
+  console.log('FullPage.js:', !!window.fullpage_api)
+  console.log('Locomotive:', !!window.locomotiveScroll)
+  console.log('GSAP ST:', typeof gsap !== 'undefined' && !!gsap.ScrollTrigger)
+  console.log('Lenis:', !!window.lenis)
+  // GSAP ScrollTrigger pinning sections = TYPE B
+
+STEP 4 — Virtual routing detection:
+  window.__NEXT_DATA__  // present = Next.js
+  window.history.state  // check pushState calls during navigation
+
+DECLARE THE ARCHITECTURE TYPE BEFORE PROCEEDING:
+
+  TYPE A — Standard MPA
+  Each nav link = separate URL = separate Next.js page in /app directory.
+  Build: normal pages, transitions between routes.
+
+  TYPE B — Full-Scroll SPA ← THE MOST DANGEROUS ONE TO GET WRONG
+  ALL content lives in ONE document. "Pages" are sections.
+  Nav links scroll-to-section (or GSAP-pin-travel). URL may not change.
+  Build rule: EVERYTHING in app/page.tsx. NO sub-pages for work/about/contact.
+  Sections are React components stacked vertically, pinned via GSAP ScrollTrigger.
+  Navigation uses scrollTo(sectionRef) — NEVER Next.js router.push().
+  ⚠️ ACTIVE THEORY, AWWWARDS SITES, STUDIO PORTFOLIOS are often TYPE B.
+  ⚠️ Building TYPE B as TYPE A = completely wrong experience = total failure.
+
+  TYPE C — Virtual-Routing SPA (Barba.js / GSAP clip-path transitions)
+  URL changes but NO full page reload. Transitions animate between views.
+  Build rule: Next.js pages BUT every route change fires a clip-path or
+  curtain transition. Page loader fires on every navigation. All pages share
+  one persistent layout wrapper (cursor, audio, loader all persist).
+  ⚠️ Building TYPE C without transitions = broken experience.
+
+Write TYPE decision as: "ARCHITECTURE: TYPE [A/B/C] — reason: [evidence]"
+Do not proceed to Phase 1 until type is declared.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 1 — FULL SITE DISCOVERY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Chrome MCP. Navigate to Target URL. Screenshot every page/section.
+
+LIST EVERY SECTION/URL — homepage, work/projects, about, contact, world, journal,
+lab, experiments, every individual project page, every article. EVERY entry point
+in nav + footer + buttons + inline links. This is the BUILD CONTRACT.
+
+For TYPE B sites: "pages" are sections. List them as section IDs, not URLs.
+For TYPE A/C sites: list actual URLs.
+
+Document: section order, every nav link, footer, decorative SVGs, loader
+behavior, navbar, mobile menu, ALL inline interactions.
+
+3D DETECTION in DevTools console on target site:
+  console.log('THREE:', !!window.THREE, window.THREE?.REVISION)
+  document.querySelectorAll('canvas').forEach((c,i)=>{
+    const f=Object.keys(c).find(k=>k.startsWith('__reactFiber'))
+    console.log(`Canvas[${i}]: R3F=${!!f} ${c.width}x${c.height}`)
+  })
+Network tab filter: .glb .gltf .hdr .ktx2 spline.design lottie .mp3 .ogg
+
+SCROLL PIPELINE AUDIT (critical for TYPE B):
+  - How many full-height sections exist?
+  - Which sections are GSAP-pinned (scroll triggers camera/position change)?
+  - What easing governs each section-to-section transition?
+  - Is there a dedicated scroll progress indicator (line, counter, etc.)?
+  - Does the nav update its active state as sections scroll into view?
+  - Does the preloader/intro count as section 0?
+  Time the full scroll journey from top to bottom via Chrome MCP.
+
+AGENCY DETECTION — for every § AGENCY-DETECTION trigger in agency-patterns.md
+that's present (letter loader, audio prompt, click-hold, draggable world,
+numbered nav, custom cursor, filter pills, multi-office, year wrapped):
+list each one. If 3+ present → executing agency-patterns.md is MANDATORY.
+
+⚠️ COVERAGE RULE: Every section/URL from above MUST be built fully.
+   Stubbing work/about/contact = critical failure.
+⚠️ 3D RULE: Detected R3F/WebGL → build R3F. CORS → § CORS-FALLBACK.
+   NEVER downgrade to CSS 3D.
+⚠️ TYPE B RULE: If architecture is TYPE B, there must be ZERO sub-pages
+   created for content sections. They ALL live in app/page.tsx as section
+   components. Creating /work as a separate Next.js page = critical failure.
+
+Do not proceed until every section is screenshotted and every interaction listed.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 2 — DESIGN SYSTEM EXTRACTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Hex codes, fonts, weights, sizes, spacing scale, grid, gradients, shadows.
+3D: canvas bg, lighting, materials, post-processing — match to a preset in
+3d-system.md § PREMIUM-LIGHTING and § POST-PROCESSING.
+
+TYPE B — also extract:
+  - Section background colors and how they transition between sections
+  - Full-height vs partial-height sections
+  - Pinned vs scroll-through sections
+  - Overlay text positioning per section
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 3 — MOTION SYSTEM EXTRACTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Every animation: trigger, duration, easing, stagger.
+3D: camera type, scroll-linked behavior, object animation, particle count,
+mouse parallax lerp. Time one ambient 3D loop via Chrome MCP.
+MICRO-INTERACTIONS: time letter loader, click-hold duration, audio prompt
+fade, cursor scale-on-hover, filter pill morph duration.
+
+TYPE B — SCROLL PIPELINE MOTION (extract ALL):
+  - ScrollTrigger pin duration per section (in scroll pixels)
+  - Camera or scene movement during each pinned section (start/end state)
+  - Content reveal timing within each section (entry animation)
+  - Section-to-section transition: clip-path, opacity, scale, translate?
+  - Scroll progress indicator animation (position, scale, fill)
+  - Nav active-state change trigger (scroll offset %)
+  - Any parallax offset values per layer
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 4 — ASSET EXTRACTION (AUTONOMOUS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Download what's available. RECREATE what's not. Never wait for user.
+
+Available: logos, SVGs, icons, images, fonts, videos, audio (Network tab).
+3D: .glb → /public/models/, .hdr → /public/environments/, Spline URLs.
+
+Download blocked → recreate per asset-fallback.md:
+  Video       → § VIDEO FILES (Pexels match or CSS gradient animation)
+  Audio       → § AUDIO SYSTEM (Web Audio API generation OR silent mode)
+  Lottie      → § LOTTIE (Framer Motion recreation)
+  3D model    → § 3D MODELS (R3F primitives with premium materials)
+  Font        → § FONTS (Google Fonts closest match)
+
+⚠️ NEVER stop and ask user for files. NEVER leave TODO comments.
+⚠️ NEVER ship "Fallback*" component names — rename to production names.
+⚠️ Every passive wire must ACTIVATE on click/hover/scroll.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASE 5 — INTERACTIVE BEHAVIOR + COVERAGE AUDIT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+For EVERY section/page from Phase 1:
+- Count interactive elements (links, buttons, hovers, drags, etc.)
+- Document every cursor behavior, hover state, modal, form, scroll trigger
+- 3D scenes: mouse rotation max in X/Y degrees, FPS, GPU memory
+Industry-specific audit from CLAUDE.md.
+Premium agency audit from § PREMIUM-AGENCY-CHECKLIST if 3+ triggers detected.
+
+TYPE B — additional coverage checks:
+  - Does scrolling all the way through visit EVERY section? (no skipped sections)
+  - Does clicking each nav item correctly jump/scroll to its section?
+  - Does the scroll progress indicator update live through every section?
+  - Do individual work/project items have hover states and expand/detail views?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CODING — AFTER ALL 5 PHASES DOCUMENTED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+git init && git add -A && git commit -m "initial scaffold"
+
+SCAFFOLD DECISION — based on architecture type:
+
+TYPE A scaffold:
+  /app
+    /page.tsx           ← homepage
+    /work/page.tsx      ← work page
+    /about/page.tsx     ← about page
+    /contact/page.tsx   ← contact page
+  Standard Next.js routing.
+
+TYPE B scaffold: ← FULL-SCROLL SPA
+  /app
+    /page.tsx           ← THE ENTIRE SITE. All sections here.
+    NO /work/page.tsx
+    NO /about/page.tsx
+    NO /contact/page.tsx
+  /components
+    /sections
+      HeroSection.tsx
+      WorkSection.tsx       ← "work page" is a SECTION, not a page
+      AboutSection.tsx      ← "about page" is a SECTION, not a page
+      ContactSection.tsx    ← "contact page" is a SECTION, not a page
+      [every other section]
+  Navigation scrolls to section refs via GSAP scrollTo — no router.push().
+  GSAP ScrollTrigger pins sections. Lenis drives smooth scroll.
+  ⚠️ If you find yourself creating /work/page.tsx on a TYPE B site → STOP.
+     Delete it. Move the content to a section component in app/page.tsx.
+
+TYPE C scaffold:
+  /app
+    /page.tsx           ← each content page is a Next.js route
+    /work/page.tsx
+    /about/page.tsx
+    /contact/page.tsx
+  /components
+    /transitions
+      PageTransition.tsx    ← clip-path or curtain animation
+  layout.tsx wraps ALL pages with PageTransition.
+  Every route change triggers the transition BEFORE rendering new page.
+
+Spawn parallel agents from CLAUDE.md PLUS these agency-tier agents
+(if § AGENCY-DETECTION triggered):
+
+INTRO AGENT — letter loader → audio prompt → sound toggle persistent
+NAVIGATION AGENT — numbered nav, ⮡ arrow links, custom cursor with text reveal
+  TYPE B: nav items use scrollTo(sectionRef), not router.push()
+PROJECT GRID AGENT — full work/projects section with FilterPills + grid + hover
+WORLD AGENT — full world/lab section with draggable 3D scene (R3F, not CSS)
+CONTACT AGENT — multi-office block, form states, social links
+PROMO AGENT — year-wrapped card if source has one
+
+SCROLL PIPELINE AGENT (TYPE B ONLY — mandatory):
+  Owns the entire GSAP ScrollTrigger scroll pipeline.
+  - Creates ScrollTrigger pin for each full-height section
+  - Wires section-to-section transitions (clip-path/opacity/scale)
+  - Wires scroll progress indicator to scroll position
+  - Wires nav active state to current visible section
+  - Coordinates Lenis ↔ ScrollTrigger proxy
+  - Verifies scrolling through entire site visits all sections in order
+  - Verifies nav jump-to-section works for all nav items
+  ⚠️ This agent must be completed BEFORE content agents start — they need
+     the pin structure to place their content correctly.
+
+3D SCENE AGENT (MANDATORY if any 3D found):
+- Confirm tier via 3d-system.md § TIER DETECTION
+- NEVER downgrade R3F to CSS 3D
+- Implement on ALL sections where source has 3D, not just hero
+- Use Scene.tsx + SceneCanvas.tsx + SceneLoader patterns
+- Materials from § PREMIUM-MATERIALS, lighting from § PREMIUM-LIGHTING,
+  post-processing from § POST-PROCESSING, particles via Sparkles/Particles
+- Mobile fallback for every R3F scene
+- Run § ALL-PAGES-3D-AUDIT before declaring 3D done
+
+EVERY SECTION FROM PHASE 1 IS A FULL BUILD. Stubs = critical failure.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUALITY GATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+bash .claude/hooks/pre-done.sh
+bash .claude/hooks/check-content.sh
+bash .claude/hooks/post-build.sh
+Fix everything flagged.
+
+Run TEST.md full audit:
+- Phase 0 (Architecture Integrity — MANDATORY)
+- Phase 6 (3D)
+- Phase 7 (Lighthouse)
+- Phase 8 (Coverage & Depth — MANDATORY)
+- Phase 9 (Micro-Interactions — MANDATORY if agency-tier)
+- Phase 11 (Scroll Pipeline Integrity — MANDATORY for TYPE B)
+
+Chrome MCP visual comparison every section vs original.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DEPLOY — GITHUB + VERCEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. git add -A && git commit -m "production: ready" && git branch -M main
+2. gh repo create [BRAND_NAME]-clone --private --source=. --remote=origin --push
+3. npx vercel --prod
+4. Open live URL → run TEST.md against it (not localhost).
+   Confirm 3D renders, every section loads, zero console errors.
+   TYPE B: confirm full scroll journey works end-to-end on live URL.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ABSOLUTE RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✗ Never start coding before all 5 phases documented
+✗ Never skip Phase 0 architecture detection — this sets the entire scaffold
+✗ Never build TYPE B as separate Next.js pages — all sections in app/page.tsx
+✗ Never stub a section — every nav link = complete section or page
+✗ Never skip detected 3D — and never downgrade R3F to CSS 3D
+✗ Never skip signature micro-interactions on agency-tier sites
+✗ Never declare done with coverage <85% of source per section/page
+✗ Never declare done with passive wires (handlers defined but never visibly fire)
+✗ Never ship "Fallback*" named components — rename to production names
+✗ Never leave TODO/FIXME/"user provides" comments
+✗ Never declare done without hooks + TEST.md + Chrome MCP comparison
+✗ Never deploy without TEST.md passing on live Vercel URL
+✗ TYPE B: Never use router.push() for section navigation — always scrollTo(ref)
+✗ TYPE B: Never declare scroll pipeline done without scrolling full journey
+   end-to-end and confirming every section is reachable
