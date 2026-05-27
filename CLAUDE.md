@@ -21,7 +21,7 @@ tools:
 Industry:    E-Commerce / Shop
 Brand Name:  Flourish Bakery
 Target URL:  https://bakers-tnc.webflow.io/
-Clone URL:   https://elanora-bakery.vercel.app/
+Clone URL:   https://flourish-bakery.vercel.app/
 Stack:       Next.js 14 App Router, TypeScript, TailwindCSS, Framer Motion, Lenis
 Copyright:   NovaCraft
 Last Commit: [fill after first commit]

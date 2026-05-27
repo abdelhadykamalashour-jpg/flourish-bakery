@@ -135,7 +135,7 @@ export default function ProductPage({ params }: Props) {
                 {/* Name */}
                 <h1
                   className="text-[#241D19] mb-4"
-                  style={{ fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.2, fontFamily: 'Playfair Display, serif' }}
+                  style={{ fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 700, lineHeight: 1.2, fontFamily: 'var(--font-serif), Georgia, serif' }}
                 >
                   {product.name}
                 </h1>

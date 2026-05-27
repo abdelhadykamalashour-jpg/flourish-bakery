@@ -41,18 +41,18 @@ export function AboutSnippetSection() {
               </motion.div>
             ))}
 
-            {/* Video embed — inline with text block */}
+            {/* Video embed — full-width below text block */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.7, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-              className="flex items-center gap-6 pt-4"
+              className="flex flex-col gap-4 pt-6"
             >
-              {/* Video thumbnail */}
-              <div className="relative w-32 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              {/* Video thumbnail — full column width */}
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden">
                 <motion.div
-                  className="absolute inset-0 bg-[#241D19]/80 flex items-center justify-center"
+                  className="absolute inset-0"
                   style={{ scale: videoScale }}
                 >
                   <video
@@ -66,12 +66,12 @@ export function AboutSnippetSection() {
                     <source src="/videos/about-video.mp4" type="video/mp4" />
                     <source src="/videos/about-video.webm" type="video/webm" />
                   </video>
-                  <div className="absolute inset-0 bg-[#241D19]/40 z-10" />
+                  <div className="absolute inset-0 bg-[#241D19]/30 z-10" />
                 </motion.div>
                 {/* Play indicator */}
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="w-8 h-8 rounded-full bg-[#FDF2CC] flex items-center justify-center">
-                    <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
+                  <div className="w-12 h-12 rounded-full bg-[#FDF2CC]/90 flex items-center justify-center">
+                    <svg width="14" height="16" viewBox="0 0 10 12" fill="none">
                       <path d="M1 1L9 6L1 11V1Z" fill="#241D19"/>
                     </svg>
                   </div>
@@ -89,7 +89,7 @@ export function AboutSnippetSection() {
               { value: '20+', label: 'Years of Baking' },
               { value: '50+', label: 'Menu Items' },
               { value: '10k+', label: 'Happy Customers' },
-              { value: '2', label: 'NYC Locations' },
+              { value: '2', label: 'Cairo Locations' },
             ].map((stat, i) => (
               <motion.div
                 key={i}

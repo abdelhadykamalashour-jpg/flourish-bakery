@@ -56,7 +56,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${cormorantGaramond.variable} ${lora.variable}`}>
-      <body className="font-sans">
+      <body className={`${cormorantGaramond.className} ${lora.variable}`}>
         <CartProvider>
           <LenisProvider />
           <PageLoader />
