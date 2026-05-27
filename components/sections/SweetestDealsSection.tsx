@@ -84,11 +84,11 @@ export function SweetestDealsSection() {
                         {/* Price */}
                         <div className="flex items-baseline gap-3">
                           <span className="text-3xl font-serif font-semibold text-[#C66C3C]">
-                            ${product.price.toFixed(2)}
+                            EGP {product.price.toFixed(0)}
                           </span>
                           {product.originalPrice > product.price && (
                             <span className="text-[#6B4C3B] line-through text-lg">
-                              ${product.originalPrice.toFixed(2)}
+                              EGP {product.originalPrice.toFixed(0)}
                             </span>
                           )}
                         </div>

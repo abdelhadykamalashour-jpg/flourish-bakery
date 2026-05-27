@@ -29,7 +29,7 @@ export function ProductCard({ product, variant = 'default' }: ProductCardProps) 
   const hasDiscount = product.originalPrice > product.price;
 
   return (
-    <Link href={`/product/${product.slug}`} className="menu-card block">
+    <Link href={`/product/${product.slug}`} className="menu-card flex flex-col h-full">
       {/* Image */}
       <div className="menu-image-wrap relative">
         <Image
@@ -58,18 +58,21 @@ export function ProductCard({ product, variant = 'default' }: ProductCardProps) 
         )}
       </div>
 
-      {/* Info */}
-      <div className="p-4">
-        {/* Rating */}
-        <StarRating rating={product.rating} size={12} className="mb-2" />
+      {/* Info — flex-grow so all cards in a row share equal height */}
+      <div className="p-4 flex flex-col flex-grow">
+        {/* Rating + Name — grows to fill available space */}
+        <div className="flex-grow">
+          {/* Rating */}
+          <StarRating rating={product.rating} size={12} className="mb-2" />
 
-        {/* Name */}
-        <h3 className="text-[#241D19] font-serif text-base font-semibold mb-2 leading-snug">
-          {product.name}
-        </h3>
+          {/* Name */}
+          <h3 className="text-[#241D19] font-serif text-base font-semibold mb-2 leading-snug">
+            {product.name}
+          </h3>
+        </div>
 
-        {/* Price row */}
-        <div className="flex items-center justify-between gap-2">
+        {/* Price row — pinned to bottom of card */}
+        <div className="flex items-center justify-between gap-2 mt-3">
           <div className="flex items-center gap-2">
             <span className="text-[#C66C3C] font-semibold text-base">
               EGP {product.price.toFixed(0)}

@@ -21,9 +21,8 @@ const config: Config = {
         'nav-bg': 'rgba(36,29,25,0.8)', // Transparent nav
       },
       fontFamily: {
-        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Lora', 'Georgia', 'serif'],
-        encode: ['"Encode Sans"', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Georgia', 'serif'],
         lato: ['Lato', 'sans-serif'],
       },
       fontSize: {

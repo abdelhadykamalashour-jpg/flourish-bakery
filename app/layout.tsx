@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Lora, Encode_Sans } from 'next/font/google';
+import { Cormorant_Garamond, Lora } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -24,12 +24,6 @@ const lora = Lora({
   display: 'swap',
 });
 
-const encodeSans = Encode_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-encode',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: {
@@ -61,8 +55,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorantGaramond.variable} ${lora.variable} ${encodeSans.variable}`}>
-      <body style={{ fontFamily: 'Lora, serif' }}>
+    <html lang="en" className={`${cormorantGaramond.variable} ${lora.variable}`}>
+      <body className="font-sans">
         <CartProvider>
           <LenisProvider />
           <PageLoader />

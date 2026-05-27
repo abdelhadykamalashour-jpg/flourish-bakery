@@ -23,7 +23,7 @@ html {
 body {
   background-color: var(--cream);
   color: var(--body-text);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -41,7 +41,7 @@ body {
    TYPOGRAPHY
 ───────────────────────────────────────────── */
 h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(48px, 8vw, 120px);
   line-height: 1.2;
   font-weight: 800;
@@ -49,7 +49,7 @@ h1 {
 }
 
 h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(36px, 5vw, 80px);
   line-height: 1.2;
   font-weight: 600;
@@ -57,7 +57,7 @@ h2 {
 }
 
 h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(28px, 3.5vw, 48px);
   line-height: 1.2;
   font-weight: 600;
@@ -65,21 +65,21 @@ h3 {
 }
 
 h4 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(24px, 2.5vw, 36px);
   font-weight: 600;
   color: var(--dark-brown);
 }
 
 h5 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 600;
   color: var(--dark-brown);
 }
 
 h6 {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
   font-size: 18px;
   font-weight: 600;
   color: var(--dark-brown);
@@ -94,7 +94,7 @@ h6 {
   gap: 12px;
   background-color: var(--dark-brown);
   color: var(--cream);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -164,7 +164,7 @@ h6 {
   gap: 12px;
   background-color: var(--cta-orange);
   color: var(--cream);
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -414,7 +414,7 @@ h6 {
   justify-content: space-between;
   padding: 24px 0;
   cursor: pointer;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif), Georgia, serif;
   font-size: 20px;
   font-weight: 600;
   color: var(--dark-brown);
@@ -439,7 +439,7 @@ h6 {
   padding: 14px 18px;
   border: 1px solid var(--muted-gold);
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-sans), Georgia, serif;
   font-size: 15px;
   color: var(--dark-brown);
   background: transparent;
