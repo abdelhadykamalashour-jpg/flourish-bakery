@@ -21,8 +21,8 @@ const config: Config = {
         'nav-bg': 'rgba(36,29,25,0.8)', // Transparent nav
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'Georgia', 'serif'],
-        sans: ['var(--font-sans)', 'Georgia', 'serif'],
+        serif: ['var(--font-serif)', 'serif'],
+        sans: ['var(--font-sans)', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
       },
       fontSize: {

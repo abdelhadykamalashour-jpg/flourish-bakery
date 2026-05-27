@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Lora } from 'next/font/google';
+import { Playfair_Display, Jost } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
@@ -8,22 +8,17 @@ import { CartProvider } from '@/lib/cartContext';
 import { LenisProvider } from '@/lib/lenisProvider';
 import { PageLoader } from '@/components/ui/PageLoader';
 
-const cormorantGaramond = Cormorant_Garamond({
+const playfairDisplay = Playfair_Display({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  display: 'swap',
   variable: '--font-serif',
-  display: 'swap',
 });
 
-const lora = Lora({
+const jost = Jost({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  variable: '--font-sans',
   display: 'swap',
+  variable: '--font-sans',
 });
-
 
 export const metadata: Metadata = {
   title: {
@@ -55,8 +50,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${cormorantGaramond.variable} ${lora.variable}`}>
-      <body className={`${cormorantGaramond.className} ${lora.variable}`}>
+    <html lang="en" className={`${jost.variable} ${playfairDisplay.variable}`}>
+      <body className={`${jost.variable} ${playfairDisplay.variable} font-sans bg-[#FAF6F0]`}>
         <CartProvider>
           <LenisProvider />
           <PageLoader />
