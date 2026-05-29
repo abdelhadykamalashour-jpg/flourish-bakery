@@ -37,7 +37,11 @@
       "Bash(npx tsc *)",
       "Bash(Start-Sleep -Seconds 5)",
       "Bash(Get-Content \"C:\\\\Users\\\\abdel\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\D--Website-elanora-bakery\\\\39a373b3-4d23-458a-97e1-3467a8c0e289\\\\tasks\\\\bur3ce7ch.output\" -Tail 10)",
-      "mcp__chrome-devtools__wait_for"
+      "mcp__chrome-devtools__wait_for",
+      "Bash(npm install *)",
+      "Bash(npx prisma *)",
+      "Bash(del prisma.config.ts)",
+      "Bash(git add *)"
     ]
   }
 }
