@@ -29,16 +29,15 @@ export function ProductCard({ product, variant = 'default' }: ProductCardProps) 
   const hasDiscount = product.originalPrice > product.price;
 
   return (
-    <Link href={`/product/${product.slug}`} className="menu-card flex flex-col h-full">
+    <Link href={`/product/${product.slug}`} className="menu-card group flex flex-col h-full">
       {/* Image */}
-      <div className="menu-image-wrap relative">
+      <div className="relative w-full aspect-[4/5] overflow-hidden bg-[#E8E3D9] rounded-md">
         <Image
           src={product.image}
           alt={product.name}
-          width={400}
-          height={400}
-          className="w-full h-full object-cover"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          fill
+          className="object-cover object-center transition-transform duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
 
         {/* Badge */}
